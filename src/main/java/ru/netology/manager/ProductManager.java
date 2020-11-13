@@ -1,6 +1,8 @@
 package ru.netology.manager;
 
+import ru.netology.domain.Book;
 import ru.netology.domain.Product;
+import ru.netology.domain.Smartphone;
 import ru.netology.repository.ProductRepository;
 
 public class ProductManager {
@@ -25,9 +27,8 @@ public class ProductManager {
         return result;
     }
 
-    public Product[] removeById(int id) {
-        Product[] result = repository.removeById(id);
-        return result;
+    public void removeById(int id) {
+        repository.removeById(id);
     }
 
 
@@ -35,20 +36,49 @@ public class ProductManager {
         repository.findAll();
     }
 
-    public Product findById(int id) {
-        Product result = repository.findById(id);
-        return result;
+    public void findById(int id) {
+        repository.findById(id);
     }
 
     public Product[] searchBy(String name) {
-        Product[] items = repository.findAll();
-
-
-        return Product[];
+        Product[] result = new Product[0];
+        for (Product product : repository.findAll()) {
+            if (matches(product, name)) {
+                Product[] tmp = new Product[result.length + 1];
+                System.arraycopy(result, 0, tmp, 0, result.length);
+                tmp[tmp.length - 1] = product;
+                result = tmp;
+            }
+        }
+        return result;
     }
+
     public boolean matches(Product product, String search) {
-        // ваш код
+        if (product instanceof Book) {
+            Book book = (Book) product;
+            if (book.getName().equalsIgnoreCase(search)) {
+                return true;
+            }
+            if (book.getAuthor().equalsIgnoreCase(search)) {
+                return true;
+            }
+            return false;
+        }
+        if (product instanceof Smartphone) {
+            Smartphone smartphone = (Smartphone) product;
+            if (smartphone.getName().equalsIgnoreCase(search)) {
+                return true;
+            }
+            if (smartphone.getManufacturer().equalsIgnoreCase(search)) {
+                return true;
+            }
+        }
+        return false;
     }
+
 }
+
+
+
 
 
