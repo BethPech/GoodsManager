@@ -32,12 +32,12 @@ public class ProductManager {
     }
 
 
-    public void findAll() {
-        repository.findAll();
+    public Product[] findAll() {
+        return repository.findAll();
     }
 
-    public void findById(int id) {
-        repository.findById(id);
+    public Product findById(int id) {
+       return repository.findById(id);
     }
 
     public Product[] searchBy(String name) {
@@ -52,6 +52,7 @@ public class ProductManager {
         }
         return result;
     }
+
 
     public boolean matches(Product product, String search) {
         if (product instanceof Book) {
