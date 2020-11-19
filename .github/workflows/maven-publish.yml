@@ -1,11 +1,13 @@
-# This workflow will build a package using Maven and then publish it to GitHub packages when a release is created
-# For more information see: https://github.com/actions/setup-java#apache-maven-with-a-settings-path
+# This workflow will build a Java project with Maven
+# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
 
-name: Maven Package
+name: Java CI with Maven
 
 on:
-  release:
-    types: [created]
+  push:
+    branches: [ master, Product ]
+  pull_request:
+    branches: [ master, Product ]
 
 jobs:
   build:
@@ -18,9 +20,6 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 11
-        server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
-        settings-path: ${{ github.workspace }} # location for the settings.xml file
-
     - name: Build with Maven
       run:  mvn -B -e verify pom.xml
 
