@@ -47,17 +47,7 @@ private Smartphone item6 = new Smartphone(6,"Apple", 15000,"США");
         Product actual = manager.findById(0);
         assertEquals(null, actual);
     }
-    @Test
-    void shouldSearchSeveralBy(){
-        manager.searchBy("Преступление и наказание");
-        manager.searchBy("Apple");
-//        Product[] returned = new Product[manager.searchBy()]{book2, smartphone3};
-        Product[] expected = new Product[]{item2,item6};
-        Product[] actual = System.out.println(searchBy()+shouldSearchSeveralBy(););
-        assertArrayEquals(expected, actual);
 
-    }
-//length
 }
 
 

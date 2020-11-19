@@ -19,4 +19,15 @@ public class Smartphone extends Product {
     public void setManufacturer(String manufacturer) {
         this.manufacturer = manufacturer;
     }
+
+    public Smartphone(int id, String name, int price) {
+        super(id, name, price);
+    }
+
+    @Override
+    public String toString() {
+        return "Smartphone{" +
+                "manufacturer='" + manufacturer + '\'' +
+                '}';
+    }
 }

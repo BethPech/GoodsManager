@@ -22,4 +22,14 @@ public class Book  extends Product {
         this.author = author;
     }
 
+    public Book(int id, String name, int price) {
+        super(id, name, price);
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "author='" + author + '\'' +
+                '}';
+    }
 }
