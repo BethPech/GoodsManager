@@ -9,8 +9,7 @@ import ru.netology.domain.Smartphone;
 import ru.netology.repository.ProductRepository;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.*;
+
 
 public class ProductManagerTest {
 private ProductRepository repository = new ProductRepository();
@@ -34,18 +33,16 @@ private Smartphone item6 = new Smartphone(6,"Apple", 15000,"США");
 
     @Test
     void shouldSearchBy(){
-        manager.searchBy("Samsung");
-        Product expected = item4;
-        Product actual = manager.findById(4);
-        assertEquals(expected, actual);
+        Product[] expected = new Product[]{item4};
+        Product[] actual = manager.searchBy("Samsung");
+        assertArrayEquals(expected, actual);
 
     }
     @Test
     void shouldnotSearchBy(){
-        manager.searchBy("Xiaomi");
-        Product expected = null;
-        Product actual = manager.findById(0);
-        assertEquals(null, actual);
+        Product[] expected = new Product[0];
+        Product[] actual = manager.searchBy("Xiaomi");
+        assertArrayEquals(expected, actual);
     }
 
 }
