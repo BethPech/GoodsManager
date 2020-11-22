@@ -2,7 +2,7 @@ package ru.netology.domain;
 
 import java.util.Objects;
 
-public class Book  extends Product {
+public class Book extends Product {
     private String author;
 
     public Book() {
@@ -27,9 +27,15 @@ public class Book  extends Product {
     }
 
     @Override
-    public String toString() {
-        return "Book{" +
-                "author='" + author + '\'' +
-                '}';
-    }
+    public boolean matches(String search) {
+        if (super.matches(search)) {
+            return true;
+        }
+
+        Book book = new Book();
+            if (book.getAuthor().equalsIgnoreCase(search)) {
+                return true;
+            }
+            return false;
+        }
 }

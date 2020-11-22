@@ -3,7 +3,7 @@ package ru.netology.domain;
 public class Smartphone extends Product {
     private String manufacturer;
 
-    public Smartphone(){
+    public Smartphone() {
         super();
     }
 
@@ -24,10 +24,17 @@ public class Smartphone extends Product {
         super(id, name, price);
     }
 
+
     @Override
-    public String toString() {
-        return "Smartphone{" +
-                "manufacturer='" + manufacturer + '\'' +
-                '}';
+    public boolean matches(String search) {
+        if (super.matches(search)) {
+            return  false;
+        }
+        Smartphone smartphone = new Smartphone();
+        if (smartphone.getManufacturer().equalsIgnoreCase(search)) {
+            return true;
+        }
+        return false;
     }
+
 }
