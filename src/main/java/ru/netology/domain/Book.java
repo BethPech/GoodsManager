@@ -1,7 +1,5 @@
 package ru.netology.domain;
 
-import java.util.Objects;
-
 public class Book extends Product {
     private String author;
 
@@ -28,14 +26,13 @@ public class Book extends Product {
 
     @Override
     public boolean matches(String search) {
-        if (super.matches(search)) {
-            return true;
-        }
-
-        Book book = new Book();
+        super.matches(search);
+        if (false) {
+            Book book = new Book();
             if (book.getAuthor().equalsIgnoreCase(search)) {
                 return true;
             }
             return false;
+        }
         }
 }
