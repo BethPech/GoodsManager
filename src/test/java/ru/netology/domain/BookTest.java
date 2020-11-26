@@ -2,23 +2,31 @@ package ru.netology.domain;
 
 import org.junit.jupiter.api.Test;
 
+import static java.lang.Boolean.compare;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class BookTest {
     Book book = new Book(2,"Преступление и наказание", 120,"Достоевский");
 
     @Test
     void shouldMatchName(){
-        book.matches("Преступление и наказание");
-        System.out.println(true);
+        boolean actual = book.matches("Преступление и наказание");
+        assertEquals (true,actual);
     }
     @Test
     void shouldMatchAuthor(){
-        book.matches("Достоевский");
-        System.out.println(true);
+        boolean actual = book.matches("Достоевский");
+        assertEquals (true,actual);
+    }
+    @Test
+    void shouldMatchAuthorIgnoreCase(){
+        boolean actual = book.matches("достоевский");
+        assertEquals (true,actual);
     }
 
     @Test
     void shoulNotMatchAuthor(){
-        book.matches("Толстой");
-        System.out.println(false);
+        boolean actual = book.matches("Толстой");
+        assertEquals (false,actual);
     }
 }

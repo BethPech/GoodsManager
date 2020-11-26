@@ -47,7 +47,10 @@ public class Book extends Product {
         if (super.matches(search)) {
             return true;
         }
-        return getAuthor().equals(author);
+        if (getAuthor().equalsIgnoreCase(search)){
+            return true;
+        }
+        return false;
     }
 }
 
