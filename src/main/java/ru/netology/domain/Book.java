@@ -47,7 +47,7 @@ public class Book extends Product {
         if (super.matches(search)) {
             return true;
         }
-        return getAuthor().matches(author);
+        return getAuthor().equals(author);
     }
 }
 
