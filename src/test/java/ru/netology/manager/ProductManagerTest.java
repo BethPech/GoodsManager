@@ -44,7 +44,6 @@ private Smartphone item6 = new Smartphone(6,"Apple", 15000,"США");
         Product[] actual = manager.searchBy("Xiaomi");
         assertArrayEquals(expected, actual);
     }
-
 }
 
 
